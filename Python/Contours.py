@@ -1,0 +1,15 @@
+import cv2 
+import matplotlib.pyplot as plt
+
+img = cv2.imread("image/Coins.jpg")
+gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+thresh, reslute = cv2.threshold(gray,215,255,cv2.THRESH_BINARY)
+
+Contours, hierarchy = cv2.findContours(reslute,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+cv2.drawContours(img,Contours,-1,(0,255,0),2)
+
+
+
+cv2.imshow("Output",img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
